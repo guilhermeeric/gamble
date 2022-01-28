@@ -1,0 +1,27 @@
+body
+  h1 Gamble — Tens o que é necessário?
+
+  hr
+
+  div
+    h2 Jogador
+    p Current player: #{@player.name}
+    p Current funds: #{@player.wallet.funds}
+
+  hr
+
+  div
+    h2 Jogar
+    =form_tag play_path, method: :post do
+      =hidden_field_tag :money_gambled, value: '50'
+      =select_tag :coin_side, options_for_select([['Head', 0], ['Tails', 1]])
+      br
+      =submit_tag
+
+    p Últimos resultados:
+    -@bet_history.each do |bet|
+      -if bet.play_result == 0
+        =p 'Head'
+      -else
+        =p 'Tails'
+      br
