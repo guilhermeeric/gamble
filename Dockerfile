@@ -11,6 +11,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 RUN gem install bundler -v 2.2.25
 RUN bundle install
 RUN yarn install
-RUN apt install -y vim
+RUN apt install -y build-essential libpq-dev vim
 
 ENTRYPOINT ["./entrypoint.sh"]
